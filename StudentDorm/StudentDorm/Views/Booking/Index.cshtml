@@ -1,0 +1,42 @@
+﻿@model IEnumerable<StudentDorm.Models.Booking>
+@using GridMvc.Html
+
+
+<title>Student dorm booking</title>
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/gridmvc.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+@*<script src="~/Scripts/bootstrap-datepicker.js"></script>*@
+
+<p style="margin-top:20px;">
+    @Html.ActionLink("New booking ", "Create")
+</p>
+
+@*<div class="well">
+    <div class="form-inline"> 
+        <button type="button" class="btn btn-default" data-mvcgrid-apply-filter="CurerntClick">View Current</button>
+    </div>
+</div>*@
+<div>
+    @(Html.Grid(Model)
+                .Columns(columns =>
+                            {
+                                columns.Add(foo => foo.RoomID).Titled("Room ID").SetWidth(110);
+                                columns.Add(foo => foo.StartDate).Format("{0:d}").Filterable(true);
+                                columns.Add(foo => foo.EndDate).Format("{0:d}").Filterable(true);
+                                columns.Add(foo => foo.UsedPlaces);
+                                columns.Add()
+                                    .Encoded(false)
+                                    .Sanitized(false)
+                                    .SetWidth(30)
+                                    .RenderValueAs(o => Html.ActionLink("Delete", "Delete", new { id = o.ID }, new { @class = "btn btn-danger" }));
+                            })
+                            .WithPaging(3)
+            .EmptyText("No data found")
+            .Sortable()//.Filterable().WithMultipleFilters()
+    )
+</div>

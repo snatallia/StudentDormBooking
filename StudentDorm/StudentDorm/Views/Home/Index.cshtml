@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Student dorm booking</h1>
+    <p class="lead">
+        You are developing a software solution for student dorm administration. You have a list of rooms (50-400), each room can have 1-n places. Generate rooms list in DB, include SQL script for data generation.
+
+        User can add resevations/bookings for students for any dates range, but not longer than for one year. The place is considered as "used" until the end date of a booking, further booking should be possible on the next day (so, no end/start on the same date, e.g. if one booking is over by 28th February, the next booking can be start 1st March). For each booking, a gender of resindent must be saved, and it should not be possible  to mix girls and boys in the same room at the same time.
+    </p>
+    @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+</div>
+
+<div class="row">
+    
+        <h2>Try it now!</h2>
+        <p><a class="btn btn-default" href="Booking">Booking &raquo;</a></p>    
+</div>
