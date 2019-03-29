@@ -66,6 +66,14 @@ namespace BookingStudentDorm.Controllers
                 ModelState.AddModelError("EndDate", "End Date must be after the Start Date!");
                 return View(booking);
             }
+
+            //booking period must be less 1 year
+            if (booking.StartDate.AddYears(1) <= booking.EndDate)
+            {
+                ModelState.AddModelError("EndDate", "Booking period should be not more a year!");
+                return View(booking);
+            }
+
             int roomID = booking.RoomID;
 
             //during period a to b -- dorm is busy
